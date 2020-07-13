@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <link rel= "icon" rel = "icon" type = "image/png" href = "https://cdn.clipart.email/b6b5ee332f42a875b5627d1e7de86d5d_checklist-clipart-transparent-background-checklist-transparent-_800-800.png ">
+
+      <title>Tooda Hooda!</title>
+
+    <link rel="stylesheet" href= "style.css" />
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+      <style type = "text/css">
+
+       *{
+
+             margin: 0;
+             padding:0;
+             font-family: "Comic Sans MS", sans-serif;
+             box-sizing: border-box;
+
+       }
+
+
+
+
+         body{
+
+                  background-image: linear-gradient(120deg, #487eb0, #fbc531);
+                  min-height: 100vh;
+
+         }
+
+       .container{
+
+        max-width: 800px;
+        margin:auto;
+        padding: 10px;
+        margin-top: 100px;
+
+      }
+
+
+ .txtb{
+
+    width: 100%;
+    border-bottom: 3px solid #000;
+    border-top: none;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    background: none;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    font-family: "Comic Sans MS";\
+ }
+
+ h3{
+margin: 20px 0;
+
+ }
+
+ .task{
+
+  width: 100%;
+  background: rgba(255,255,255, 0.5);
+  padding:15px;
+  margin:9px 0;
+  overflow: hidden;
+  border-radius: 15px;
+
+
+ }
+
+
+.task i{
+   float: right;
+   margin-left: 20px;
+   cursor: pointer;
+
+   }
+
+   .comp .task  {
+          background: rgba(0, 0, 0, .5);
+          color: #fff;
+          border-radius: 10px;
+
+
+   }
+
+   #box:hover {
+
+     transform: scale(1.1, 1.1);
+     
+
+   }
+
+
+
+
+      </style>
+  </head>
+
+  <body>
+
+    <div class= "container">
+      <input type = "text" class= "txtb" placeholder = "Add a Task!">
+
+   <div id="box">
+     <div class = "uncompl">
+     <h3>Not yet Completed</h3>
+
+
+            </div>
+   </div>
+
+
+               <div id = "box">
+                 <div id="comp" class = "comp">
+                    <h3>Completed</h3>
+                            </div>
+               </div>
+
+
+
+
+        <script type= "text/javascript">
+
+                  $(".txtb").on("keyup",function(e){
+
+                  if(e.keyCode == 13 && $(".txtb").val() != "" )
+                  {
+                    var task = $("<div class = 'task'></div>")  .text($(".txtb").val());
+
+                    var del= $("<i class='fa fa-trash' aria-hidden='true'></i>").click(function(){
+
+                        var p = $(this).parent();
+                          p.fadeOut(function(){
+
+                            p.remove();
+
+                          });
+
+
+                    });
+
+
+
+                    var check= $("<i class='fa fa-check-square-o' aria-hidden='true'></i>").click(function(){
+
+                         var p = $(this).parent();
+                         p.fadeOut(function(){
+                         $(".comp").append(p);
+                         p.fadeIn();
+
+                           });
+
+                 $(this).remove();
+
+                    });
+
+
+  $("<div class = 'task'></div>").hover(function(){
+
+    $(this).css("", "yellow");
+    }, function(){
+    $(this).css("background-color", "pink");
+  });
+
+
+
+
+                    task.append(del,check);
+
+                     $(".uncompl").append(task);
+
+                     $(".txtb").val("");
+
+
+
+                  }
+
+
+                  });
+
+
+                </script>
+
+
+
+  </body>
+
+      </html>
